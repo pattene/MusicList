@@ -2,6 +2,13 @@ import java.util.Arrays;
 
 public class MusicRunner
 {
+  // Remove the double quotes from beginning and end of input and trim any whitespace
+  public static String clean(String input)
+  {
+    input = input.substring(1,input.length() -1);
+    return input;
+  }
+  
   public static void main (String[] args)
   {
     int count = 0;
@@ -25,8 +32,13 @@ public class MusicRunner
       // You probably will comment this out but for now print out the line so you can see what is there
       System.out.println(Arrays.toString(data));
       
+      int year = Integer.parseInt(clean(data[3]));
+      Double score = Double.parseDouble(clean(data[4]));
+      
       // Let's try to create a Song object
-      Song song = new Song(data[0], data[1]);  // data[0] is the artist and data[1] is the name
+      Song song = new Song(clean(data[0]), data[1], year, score, data[16]);  // data[0] is the artist and data[1] is the name
+      
+      System.out.println(song.artist + ", " +  clean(song.name));
       
       count++;
       
