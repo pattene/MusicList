@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.util.*;
 
 public class MusicRunner
 {
@@ -13,6 +13,7 @@ public class MusicRunner
   {
     int count = 0;
     MusicReader mr = new MusicReader();
+    ArrayList<Song> songs = new ArrayList<Song>();
     
     mr.open("musiclist.csv");
     
@@ -36,13 +37,16 @@ public class MusicRunner
       Double score = Double.parseDouble(clean(data[4]));
       
       // Let's try to create a Song object
-      Song song = new Song(clean(data[0]), data[1], year, score, data[16]);  // data[0] is the artist and data[1] is the name
+      Song song = new Song(clean(data[0]), clean(data[1]), year, score, clean(data[16]));  // data[0] is the artist and data[1] is the name
+
+      songs.add(song);
       
-      System.out.println(song.artist + ", " +  clean(song.name));
+      System.out.println(song.artist);
       
+      // change to only count songs
       count++;
       
-      if (count == 1)  // For now only read ONE song
+      if (count == 10)  // For now only read ONE song
         break;
       
       data = mr.getSongData();  // Get next line of song data
