@@ -31,20 +31,24 @@ public class MusicRunner
     while (data != null)
     {
       // You probably will comment this out but for now print out the line so you can see what is there
-      System.out.println(Arrays.toString(data));
+      //System.out.println(Arrays.toString(data));
       
       int year = Integer.parseInt(clean(data[3]));
       Double score = Double.parseDouble(clean(data[4]));
+      String type = (clean(data[2]));
       
       // Let's try to create a Song object
       Song song = new Song(clean(data[0]), clean(data[1]), year, score, clean(data[16]));  // data[0] is the artist and data[1] is the name
 
-      songs.add(song);
+      if (type.equals("song"))
+      {
+        songs.add(song);
+        count++;
+      }
       
-      System.out.println(song.artist);
+      //System.out.println(song.artist);
       
-      // change to only count songs
-      count++;
+    
       
       if (count == 10)  // For now only read ONE song
         break;
@@ -53,5 +57,12 @@ public class MusicRunner
     }
     
     mr.close();
+    
+    for (Song s : songs)
+    {
+      System.out.println(s.artist + " - " + s.name);
+    }
+    
+    
   }
 }

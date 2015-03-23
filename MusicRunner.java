@@ -47,21 +47,22 @@ public class MusicRunner
       }
       
       //System.out.println(song.artist);
-      
-    
-      
+     
       if (count == 10)  // For now only read ONE song
         break;
+
+      
       
       data = mr.getSongData();  // Get next line of song data
     }
     
-    mr.close();
+     for(int i = songs.size() - 1; i >= 0; i-- )
+     {
+        Song song = songs.get(i);
+        System.out.println("song name: " + song.name + "," + " artist name: " + song.artist);    
+     }
     
-    for (Song s : songs)
-    {
-      System.out.println(s.artist + " - " + s.name);
-    }
+    mr.close();
     
     
   }
