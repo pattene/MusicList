@@ -6,24 +6,24 @@ import java.io.IOException;
 public class MusicReader {
  
   private BufferedReader br;
-  
+ 
   public MusicReader ()
   {
-    
+   
   }
-  
+ 
   public void open (String filename)
   {
-    try 
+    try
     {
     br = new BufferedReader(new FileReader(filename));
     }
-    catch (java.io.IOException e) 
+    catch (java.io.IOException e)
     {
       System.out.println("File not found : " + filename);
     }
   }
-  
+ 
   public void close ()
   {
     try {
@@ -35,15 +35,15 @@ public class MusicReader {
       System.out.println("File not open");
     }
   }
-  
+ 
   public String[] getSongData ()
   {
     if (br == null)
       return null;
-    
+   
     String line = "";
 
-    try 
+    try
     {
          line = br.readLine();
     }
@@ -51,14 +51,15 @@ public class MusicReader {
     {
       System.out.println("Error reading from file");
     }
-    
+   
     if (line == null)
       return null;
-    
+   
     String[] data = line.split(",");
-    
+   
     return data;
-    
+   
   }
  
 }
+

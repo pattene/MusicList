@@ -1,41 +1,46 @@
 import java.util.*;
 
 public class MusicLibrary {
-  
+ 
   private ArrayList<Song> songs;
   private int currentSortField = 0;  // Unsorted
-  
-  public MusicLibrary() { 
-    /* YOUR CONSTRUCTOR CODE HERE*/
+ 
+  public MusicLibrary()
+  {
+    this.songs= new ArrayList<Song>();
   }
-  
-  /* 
-   * Add song to songs ArrayList
-   */
+ 
+  public int count ()
+  {
+     return songs.size();
+  }
+ 
   public void addSong (Song song)
   {
+    songs.add(song);
   }
-  
+ 
   /*
    * Retrieve a song by number
    * Return null if song index num is out of bounds
    */
+ 
   public Song getSong (int num)
   {
-    return null;
+    return songs.get(num);
   }
-  
+ 
   /*
    * Sort song list by title
    */
   public void Sort ()
   {
-     currentSortField = field;
+    Collections.sort(songs);
   }
-  
+ 
   /*
    * Sort song list by a specific field
-   * 
+   *
    * 1 = title
    * 2 = artist
    */
@@ -43,7 +48,7 @@ public class MusicLibrary {
   {
     currentSortField = field;
   }
-  
+ 
   /*
    * Shuffle song list
    */

@@ -14,13 +14,26 @@ public class MusicReader {
   
   public void open (String filename)
   {
+    try 
+    {
     br = new BufferedReader(new FileReader(filename));
+    }
+    catch (java.io.IOException e) 
+    {
+      System.out.println("File not found : " + filename);
+    }
   }
   
   public void close ()
   {
+    try {
     if (br != null)
       br.close();
+    }
+    catch (java.io.IOException e)
+    {
+      System.out.println("File not open");
+    }
   }
   
   public String[] getSongData ()
@@ -30,7 +43,14 @@ public class MusicReader {
     
     String line = "";
 
-    line = br.readLine();
+    try 
+    {
+         line = br.readLine();
+    }
+    catch (java.io.IOException e)
+    {
+      System.out.println("Error reading from file");
+    }
     
     if (line == null)
       return null;
